@@ -1,0 +1,52 @@
+html {
+    background: rgb(5, 40, 5);
+}
+
+h1 h2 {
+    color: darkorange;
+}
+
+div > * {
+    padding: 0px;
+    color:crimson;
+}
+
+* {
+    color: rgb(224, 225, 221);
+}
+
+div {
+    text-decoration: underline;
+    color: black;
+}
+
+#descricao {
+    font-family: monospace;
+    color:rgb(255, 130, 234)
+}
+
+.paragrafo {
+    color:rgb(133, 191, 245)
+}
+
+p {
+    font-weight: 400;
+    font-style: italic;
+    text-align: left;
+}
+
+p[negrito] {
+    font-weight: 700;
+}
+
+p[negrito="desligado"] {
+    font-weight: 100;
+}
+
+#corpo {
+    color: blueviolet;
+}
+
+.destacado {
+    color: darkgrey;
+}
