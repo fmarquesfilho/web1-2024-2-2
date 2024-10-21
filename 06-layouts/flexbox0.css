@@ -24,3 +24,13 @@ article {
   margin: 10px;
   background: aqua;
 }
+
+.imagem {
+  height: 200px;
+  float: left;
+  border-style: dashed;
+}
+
+section {
+  display: block;
+}
