@@ -1,0 +1,32 @@
+
+/*
+ Nota: A direção em que os conteúdos dos 
+ elementos de bloco são dispostos é descrita 
+ como a Direção do Bloco. A Direção do Bloco 
+ é vertical em um idioma como o inglês, que 
+ possui um modo de escrita horizontal. Ela 
+ seria horizontal em qualquer idioma com um 
+ Modo de Escrita Vertical, como o japonês. 
+ A correspondente Direção Inline é a direção 
+ na qual os conteúdos inline (como uma frase) 
+ seriam dispostos.
+
+ Note: The direction in which block element 
+ contents are laid out is described as the 
+ Block Direction. The Block Direction runs 
+ vertically in a language such as English, 
+ which has a horizontal writing mode. It 
+ would run horizontally in any language 
+ with a Vertical Writing Mode, such as Japanese. 
+ The corresponding Inline Direction is the 
+ direction in which inline contents (such 
+ as a sentence) would run.
+
+ Da documentação: 
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction
+
+*/
+
+li {
+    display: block;
+}
