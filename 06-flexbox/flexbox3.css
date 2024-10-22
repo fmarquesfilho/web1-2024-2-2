@@ -1,0 +1,15 @@
+
+.container {
+    display: flex;
+    flex-direction: row; /* Eixo principal é horizontal */
+    justify-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.item {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 10px;
+}
