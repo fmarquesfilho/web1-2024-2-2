@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            display: flex;
+            border-style: dashed;
+            flex-direction: row;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+        p {
+            margin: 0px;
+            border-style: dashed;
+            padding: 20px;
+        }
+
+        .amarelo {
+            background-color: gold;
+            order: 2;
+            flex-basis: 200px;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .vermelho {
+            background-color: darkred;
+            order: -1;
+            flex-basis: 200px;
+            flex-grow: 1;
+            flex-shrink: 2;
+        }
+        .verde {
+            background-color: darkgreen;
+            order: 10;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p class="amarelo">Amarelo</p>
+        <p class="vermelho">Vermelho</p>
+        <p class="verde">Verde</p>
+    </div>
+</body>
+</html>
