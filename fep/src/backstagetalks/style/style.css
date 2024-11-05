@@ -143,7 +143,7 @@ aspect-ratio: Mantém a proporção original da logo.
     font-weight: 700;
     text-wrap: balance;
 }
-@media (width < 62.5rem) {
+@media (width < 70.5rem) {
     .fixed--role-about {
         display: none;
     }
