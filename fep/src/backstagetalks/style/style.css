@@ -1,0 +1,409 @@
+/* @import: Importa a fonte Roboto do Google Fonts.
+:root Define variáveis CSS para espaçamentos (--fixed-m-x e --fixed-m-y) e tamanhos de logo (--logo-h, --logo-h-md) usadas em diferentes partes do layout.
+Essas variáveis CSS são definidas no seletor :root, mas elas não precisam ser declaradas diretamente no HTML (index.html). O CSS usa essas variáveis de forma global em todo o arquivo style.css, onde elas são aplicadas em diversas classes e seletores.
+
+Aqui está um resumo de como cada uma dessas variáveis é utilizada no CSS:
+
+--fixed-m-x e --fixed-m-y: Definem margens fixas em x e y para elementos que têm posição fixa.
+Usadas para posicionar os elementos .fixed--pos-tl, .fixed--pos-tr, .fixed--pos-br, e .fixed--pos-bl.
+--logo-h e --logo-h-md: Controlam a altura da logo em diferentes tamanhos de tela.
+--logo-h é a altura padrão da logo, usada em .fixed--role-logo.
+--logo-h-md é uma altura menor aplicada em .fixed--role-logo para telas menores (em conjunto com uma media query).
+ */
+@import 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap';
+
+:root {
+    --fixed-m-x: 0.9375rem;
+    --fixed-m-y: 1.25rem;
+    --logo-h: 1.875rem;
+    --logo-h-md: 1rem;
+}
+
+/* box-sizing: Define o comportamento do box model para elementos, incluindo o padding e borda dentro do width e height.
+scroll-behavior: Ativa o scroll suave na página.
+scroll-snap-type: Habilita o "scroll snap" vertical, para uma experiência de navegação mais fluida. */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+@media (width < 62.5rem) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+/* font-family e font-size: Define a fonte padrão (Roboto) e o tamanho da fonte.
+background-color: Define a cor inicial de fundo do corpo.
+animation-name e animation-timeline: Aplica uma animação de mudança de cor ao fundo do corpo. Em telas menores, uma animação diferente (bg-change-margin) é aplicada.
+*/
+
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5625rem;
+    background-color: #fd5f8d;
+    animation-name: bg-change;
+    animation-timeline: scroll();
+  }
+  @media (width < 62.5rem) {
+    body {
+      animation-name: bg-change-margin;
+    }
+}
+
+/* img: Define imagens como elementos de bloco. */
+
+img {
+    display: block;
+}
+
+/* .fixed: Define posição fixa para elementos específicos, para que permaneçam visíveis ao rolar a página.
+*/
+.fixed {
+    position: fixed;
+    z-index: 2;
+}
+a.fixed, .fixed a {
+    color: currentcolor; /* herda a cor do pai */
+}
+
+/* .fixed--pos-tl e .fixed--pos-tr: Posições para a logo e informações de contato no topo esquerdo e direito da página.
+aspect-ratio: Mantém a proporção original da logo.
+*/
+
+.fixed p {
+    margin-block: 0;
+}
+.fixed--pos-tl {
+    top: var(--fixed-m-y);
+    left: var(--fixed-m-x);
+}
+.fixed--pos-tr {
+    top: var(--fixed-m-y);
+    right: var(--fixed-m-x);
+}
+.fixed--pos-br {
+    right: var(--fixed-m-x);
+    bottom: var(--fixed-m-y);
+}
+.fixed--pos-bl {
+    right: calc(var(--fixed-m-x) + 10.25rem);
+    bottom: var(--fixed-m-y);
+    left: var(--fixed-m-x);
+}
+.fixed--role-logo {
+    height: var(--logo-h);
+}
+@media (width < 47.5rem) {
+    .fixed--role-logo {
+        height: var(--logo-h-md);
+    }
+}
+.fixed--role-contact {
+    font-weight: 700;
+    text-decoration: none;
+}
+@media (width < 62.5rem) {
+    .fixed--role-contact {
+        display: none;
+    }
+}
+.fixed--role-contact:hover {
+    text-decoration: underline;
+}
+.fixed--role-list {
+    padding-left: 0;
+    margin-block: 0;
+    line-height: 1.8rem;
+    text-transform: capitalize;
+    list-style: none;
+    transform: rotate(180deg);
+}
+@media (width < 62.5rem) {
+    .fixed--role-list {
+        display: none;
+    }
+}
+.fixed--role-list > li {
+    transform: rotate(180deg);
+}
+.fixed--role-list > li > a {
+    text-decoration: none;
+}
+.fixed--role-list > li > a:hover {
+    text-decoration: underline;
+}
+.fixed--role-about {
+    max-width: 30ch;
+    font-weight: 700;
+    text-wrap: balance;
+}
+@media (width < 62.5rem) {
+    .fixed--role-about {
+        display: none;
+    }
+}
+.fixed__copyright {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.fixed__copyright > a:hover {
+    text-decoration: none;
+}
+.fixed__policy {
+    display: block;
+    margin-top: 1lh;
+}
+.fixed__policy:hover {
+    text-decoration: none;
+}
+
+.wrapper {
+    z-index: 1;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/*
+Explicação das Propriedades
+
+1. display: grid;
+Define o elemento .issue como um contêiner de grade (grid container), permitindo o uso do layout de grade CSS.
+
+2. grid-template-rows
+- Define as alturas das linhas no grid do elemento .issue.
+- Esse grid tem quatro linhas, com alturas especificadas para cada uma delas:
+
+* Primeira linha (minmax(calc(2 * var(--fixed-m-y) + var(--logo-h)), 1fr)):
+minmax(...) define uma faixa de altura mínima e máxima.
+calc(2 * var(--fixed-m-y) + var(--logo-h)) calcula uma altura mínima baseada em duas vezes a margem vertical (--fixed-m-y) mais a altura da logo (--logo-h).
+1fr define a altura máxima como uma fração (uma parte proporcional do espaço restante).
+
+* Segunda linha (auto):
+Define uma linha com altura automática, que ajusta-se ao conteúdo.
+
+* Terceira linha (5lh):
+Define uma altura específica de 5lh, onde lh (linha de altura) depende da altura da linha atual do texto, baseada em line-height.
+
+* Quarta linha (minmax(calc(2 * var(--fixed-m-y)), 1fr)):
+Define uma altura mínima de 2 * var(--fixed-m-y), e máxima de 1fr, semelhante à primeira linha.
+
+3. grid-template-columns
+Define as larguras das colunas no grid do elemento .issue.
+Esse grid tem três colunas:
+
+* Primeira coluna (minmax(var(--fixed-m-x), 1fr)):
+A largura mínima é definida pela variável --fixed-m-x, e a máxima é 1fr, ocupando o espaço restante de forma proporcional.
+
+* Segunda coluna (minmax(0, 26.25rem)):
+Define a largura mínima como 0 e a máxima como 26.25rem, limitando a largura da coluna central.
+
+* Terceira coluna (minmax(var(--fixed-m-x), 1fr)):
+Igual à primeira coluna, com uma largura mínima de --fixed-m-x e máxima de 1fr.
+
+4. min-height: 100svh;
+Define uma altura mínima de 100% da altura visível da tela (100svh). Isso garante que o elemento .issue sempre ocupe ao menos a altura da tela.
+
+5. scroll-snap-align: center;
+Faz parte do comportamento de scroll snapping e alinha o elemento .issue ao centro da tela ao rolar a página, criando uma navegação suave e centralizada para cada item.
+
+# Resumo
+grid-template-rows e grid-template-columns estruturam o layout do elemento em uma grade de 4 linhas e 3 colunas.
+min-height: 100svh garante que cada .issue ocupa ao menos a altura total da tela, ideal para seções de página em tela cheia.
+scroll-snap-align: center posiciona a seção no centro durante o scroll, aprimorando a experiência de navegação.
+Essas configurações criam um layout responsivo e bem distribuído para cada seção de .issue, mantendo a proporção e o alinhamento ao rolar a página.
+*/
+
+.issue {
+    display: grid;
+    grid-template-rows: minmax(calc(2 * var(--fixed-m-y) + var(--logo-h)), 1fr) auto 5lh minmax(calc(2 * var(--fixed-m-y)), 1fr);
+    grid-template-columns: minmax(var(--fixed-m-x), 1fr) minmax(0, 26.25rem) minmax(var(--fixed-m-x), 1fr);
+    min-height: 100svh;
+    scroll-snap-align: center;
+}
+.issue__img {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: stretch;
+}
+.issue__text {
+    grid-row: 3;
+    grid-column: 2;
+    text-align: center;
+}
+.issue__title {
+    margin-block: 0;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.issue__link {
+    margin-block: 1lh 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/*
+Esta parte do CSS define o estilo e o comportamento responsivo do rodapé (`.footer`). Vamos analisar cada parte:
+
+### Comportamento de Visibilidade e Layout do Rodapé
+
+1. **Exibição padrão (`display: none;`)**:
+   - O rodapé (`.footer`) é oculto por padrão em telas maiores, o que significa que ele só aparecerá em dispositivos menores (como tablets e smartphones), ativado por media queries.
+
+2. **Media Query para telas menores que 62.5rem (aproximadamente 1000px)**:
+   - Em telas menores que 62.5rem (1000px), o rodapé aparece e usa **layout flexível** (`display: flex`).
+   - **`flex-direction: row-reverse;`**: Organiza os itens do rodapé em uma linha, mas invertida, alinhando-os da direita para a esquerda.
+   - **`align-items: end;`**: Alinha os itens no final (base) do contêiner.
+   - **`justify-content: space-between;`**: Distribui o espaço uniformemente entre os elementos do rodapé.
+   - **`padding-inline` e `padding-bottom`**: Define o espaçamento interno nas laterais (horizontal) e na base, usando as variáveis `--fixed-m-x` e `--fixed-m-y` para consistência.
+
+3. **Media Query para telas ainda menores (menos de 35rem ou 560px)**:
+   - Em telas muito pequenas, o layout do rodapé muda para **coluna invertida** (`flex-direction: column-reverse`), com os itens alinhados verticalmente.
+   - **`gap: 1lh;`**: Adiciona um espaço entre os elementos, igual à altura da linha atual.
+   - **`align-items: center;`** e **`justify-content: center;`**: Centralizam os itens tanto na direção horizontal quanto vertical.
+
+### Estilos Individuais dos Elementos do Rodapé
+
+4. **Links do rodapé**:
+   - Define a cor dos links dentro do rodapé para `currentcolor`, que usa a cor do texto atual.
+
+5. **Contato no rodapé (`.footer__contact`)**:
+   - **`right`** e **`bottom`**: Espaçam o link de contato em relação ao canto inferior direito.
+   - **`font-weight: 700;`**: Aplica negrito ao texto do contato.
+   - **`text-decoration: none;`**: Remove o sublinhado do link; ele só aparece ao passar o mouse (**hover**).
+
+6. **Descrição `Sobre` (`.footer__about`)**:
+   - **`max-width: 30ch`**: Limita a largura a 30 caracteres, criando um layout compacto.
+   - **`text-wrap: balance;`**: Ajusta o espaçamento de texto para melhorar a legibilidade (embora o suporte a `text-wrap` seja experimental).
+   - Em telas menores que 35rem, a largura máxima é redefinida (`max-width: unset`) e o texto é centralizado.
+
+7. **Copyright (`.footer__copyright`)**:
+   - **`font-size: 0.75rem;`** e **`font-weight: 400;`**: Define um tamanho de fonte menor e um peso padrão (normal) para o texto de copyright.
+   - **Sublinhado ao passar o mouse** é desativado para links dentro do copyright.
+
+8. **Política de Privacidade (`.footer__policy`)**:
+   - **`display: block;`**: Exibe a política de privacidade como um bloco, permitindo controle de margem.
+   - **`margin-top: 1lh;`**: Adiciona uma margem superior baseada na altura da linha (`lh`) para espaçamento.
+   - Remove o sublinhado ao passar o mouse (**hover**).
+
+### Resumo
+
+Esses estilos garantem que o rodapé seja:
+- Oculto em telas grandes e exibido apenas em dispositivos menores.
+- Responsivo, com layout que se adapta entre **linha invertida** e **coluna** conforme o tamanho da tela.
+- Estilizado de forma a maximizar a legibilidade e consistência em várias resoluções.
+*/
+
+.footer {
+    display: none;
+}
+@media (width < 62.5rem) {
+    .footer {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: end;
+        justify-content: space-between;
+        padding-inline: var(--fixed-m-x);
+        padding-bottom: var(--fixed-m-y);
+    }
+}
+@media (width < 35rem) {
+    .footer {
+        flex-direction: column-reverse;
+        gap: 1lh;
+        align-items: center;
+        justify-content: center;
+    }
+}
+a.footer, .footer a {
+    color: currentcolor;
+}
+
+.footer__contact {
+    right: var(--fixed-m-x);
+    bottom: var(--fixed-m-y);
+    font-weight: 700;
+    text-decoration: none;
+}
+.footer__contact:hover {
+    text-decoration: underline;
+}
+.footer__about {
+    max-width: 30ch;
+    font-weight: 700;
+    text-wrap: balance;
+}
+@media (width < 35rem) {
+    .footer__about {
+        max-width: unset;
+        text-align: center;
+    }
+}
+.footer__copyright {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.footer__copyright > a:hover {
+    text-decoration: none;
+}
+.footer__policy {
+    display: block;
+    margin-top: 1lh;
+}
+.footer__policy:hover {
+    text-decoration: none;
+}
+
+/* Keyframes */
+
+@keyframes bg-change {
+0%, 8.3333333333% {
+    background-color: #fd5f8d;
+}
+16.6666666667%, 25% {
+    background-color: #fff;
+}
+33.3333333333%, 41.6666666667% {
+    background-color: #00c1b5;
+}
+50%, 58.3333333333% {
+    background-color: #ff651a;
+}
+66.6666666667%, 75% {
+    background-color: #ffbe00;
+}
+83.3333333333%, 91.6666666667% {
+    background-color: #1d3fbb;
+}
+100% {
+    background-color: #e30512;
+}
+}
+@keyframes bg-change-margin {
+0%, 8.3333333333% {
+    background-color: #fd5f8d;
+}
+16.6666666667%, 25% {
+    background-color: #fff;
+}
+33.3333333333%, 41.6666666667% {
+    background-color: #00c1b5;
+}
+50%, 58.3333333333% {
+    background-color: #ff651a;
+}
+66.6666666667%, 75% {
+    background-color: #ffbe00;
+}
+83.3333333333%, 91.6666666667% {
+    background-color: #1d3fbb;
+}
+100% {
+    background-color: #e30512;
+}
+}
