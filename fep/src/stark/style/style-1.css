@@ -1,0 +1,100 @@
+@import 'https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap';
+
+* {
+    box-sizing: border-box;
+}
+
+/* Define a fonte e a cor padrão para o texto da página */
+body {
+  font-family: "Radio Canada Big", sans-serif;
+  color: #10284b;
+}
+
+div {
+    border-style: dashed;
+}
+
+/* Estiliza o container principal para centralizar e ajustar o espaçamento ao redor do conteúdo */
+.middle {
+    padding-block: 4rem 10rem;
+     /* Espaçamento superior e inferior */
+    padding-inline: 1.5rem; /* Espaçamento nas laterais */
+}
+
+/* Define o layout da página com duas colunas:
+   - Uma coluna estreita para a barra lateral
+   - Uma coluna maior para o conteúdo principal */
+.middle__wrapper {
+    display: grid;
+    grid-template-columns: 17.5rem auto; /* Define largura da barra lateral e da coluna principal */
+    column-gap: 4rem;
+    max-width: 70rem; /* Largura máxima do conteúdo */
+    margin-inline: auto; /* Centraliza o conteúdo */
+}
+
+/* Estiliza a barra lateral para que ela fique fixa ao rolar a página */
+.sidebar {
+    position: sticky; /* Permite que a barra lateral fique fixa ao rolar */
+    top: 5rem; /* Define a distância do topo da tela */
+    align-self: start; /* Alinha o início do conteúdo da barra lateral */
+}
+
+/* Configura o layout da área principal para exibir as colunas automaticamente */
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr)); /* Ajusta a largura mínima das colunas */
+     /* Espaçamento entre as colunas */
+    column-gap: 2rem;
+}
+  
+/* Define o layout do cabeçalho para organizar o título, descrição e link "view all" */
+.header {
+    display: grid;
+    grid-template-rows: auto auto; /* Define duas linhas para o título e descrição */
+    grid-template-columns: auto min-content; /* Aloca espaço para o título e o link "view all" */
+    grid-column: 1/-1; /* Cabeçalho ocupa a largura total */
+    gap: 0.5rem 3rem; /* Espaçamento entre as linhas e colunas */
+    margin-top: 64px; /* Espaçamento superior */
+}
+
+/* Remove o espaçamento superior para o primeiro cabeçalho */
+.header:first-child {
+    margin-top: 0;
+}
+
+/* Estiliza o título do cabeçalho */
+.header__title {
+    grid-row: 1; /* Coloca o título na primeira linha */
+    grid-column: 1; /* Coloca o título na primeira coluna */
+    font-family: Radio Canada Big, sans-serif;
+    font-size: 3rem; /* Tamanho grande para destaque */
+    font-weight: 900; /* Fonte negrito */
+    line-height: 1.1; /* Espaçamento entre linhas */
+    color: #10284b; /* Cor azul */
+}
+
+/* Estiliza a descrição do cabeçalho */
+.header__description {
+    grid-row: 2; /* Coloca a descrição na segunda linha */
+    grid-column: 1/-1; /* Ocupa toda a largura */
+    font-family: Radio Canada Big, sans-serif;
+    font-size: 1.25rem; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte normal */
+    line-height: 1.5; /* Espaçamento entre linhas */
+    color: #10284b; /* Cor azul */
+}
+
+/* Estiliza o link "view all" */
+.header__view-all {
+    display: block;
+    grid-row: 1; /* Coloca o link na primeira linha */
+    grid-column: -2; /* Alinha o link à direita */
+    align-self: center; /* Centraliza verticalmente */
+    font-family: "Roboto Mono", monospace;
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    text-wrap: nowrap;
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 700; /* Negrito */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #381fd1; /* Cor azul escuro */
+}
