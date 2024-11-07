@@ -16,8 +16,7 @@ div {
 
 /* Estiliza o container principal para centralizar e ajustar o espaçamento ao redor do conteúdo */
 .middle {
-    padding-block: 4rem 10rem;
-     /* Espaçamento superior e inferior */
+    padding-block: 4rem 10rem; /* Espaçamento superior e inferior */
     padding-inline: 1.5rem; /* Espaçamento nas laterais */
 }
 
@@ -37,6 +36,10 @@ div {
     position: sticky; /* Permite que a barra lateral fique fixa ao rolar */
     top: 5rem; /* Define a distância do topo da tela */
     align-self: start; /* Alinha o início do conteúdo da barra lateral */
+}
+
+p {
+    border-style: dashed;
 }
 
 /* Configura o layout da área principal para exibir as colunas automaticamente */
@@ -66,29 +69,28 @@ div {
 .header__title {
     grid-row: 1; /* Coloca o título na primeira linha */
     grid-column: 1; /* Coloca o título na primeira coluna */
-    font-family: Radio Canada Big, sans-serif;
     font-size: 3rem; /* Tamanho grande para destaque */
     font-weight: 900; /* Fonte negrito */
     line-height: 1.1; /* Espaçamento entre linhas */
-    color: #10284b; /* Cor azul */
 }
 
 /* Estiliza a descrição do cabeçalho */
 .header__description {
     grid-row: 2; /* Coloca a descrição na segunda linha */
     grid-column: 1/-1; /* Ocupa toda a largura */
-    font-family: Radio Canada Big, sans-serif;
     font-size: 1.25rem; /* Tamanho da fonte */
     font-weight: 400; /* Peso da fonte normal */
     line-height: 1.5; /* Espaçamento entre linhas */
-    color: #10284b; /* Cor azul */
+}
+
+a {
+    border-style: dashed;
 }
 
 /* Estiliza o link "view all" */
 .header__view-all {
-    display: block;
     grid-row: 1; /* Coloca o link na primeira linha */
-    grid-column: -2; /* Alinha o link à direita */
+    grid-column: 2; /* Alinha o link à direita */
     align-self: center; /* Centraliza verticalmente */
     font-family: "Roboto Mono", monospace;
     text-transform: uppercase; /* Transforma o texto em maiúsculas */
