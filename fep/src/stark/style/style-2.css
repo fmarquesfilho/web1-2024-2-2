@@ -1,0 +1,401 @@
+@import 'https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap';
+
+* {
+    box-sizing: border-box;
+}
+
+/* Define a fonte e a cor padrão para o texto da página */
+body {
+  font-family: "Radio Canada Big", sans-serif;
+  color: #10284b;
+}
+
+/* div {
+    border-style: dashed;
+} */
+
+/* Estiliza o container principal para centralizar e ajustar o espaçamento ao redor do conteúdo */
+.middle {
+    padding-block: 4rem 10rem; /* Espaçamento superior e inferior */
+    padding-inline: 1.5rem; /* Espaçamento nas laterais */
+}
+
+/* Define o layout da página com duas colunas:
+   - Uma coluna estreita para a barra lateral
+   - Uma coluna maior para o conteúdo principal */
+.middle__wrapper {
+    display: grid;
+    grid-template-columns: 17.5rem auto; /* Define largura da barra lateral e da coluna principal */
+    column-gap: 4rem;
+    max-width: 70rem; /* Largura máxima do conteúdo */
+    margin-inline: auto; /* Centraliza o conteúdo */
+}
+
+/* Estiliza a barra lateral para que ela fique fixa ao rolar a página */
+.sidebar {
+    position: sticky; /* Permite que a barra lateral fique fixa ao rolar */
+    top: 5rem; /* Define a distância do topo da tela */
+    align-self: start; /* Alinha o início do conteúdo da barra lateral */
+}
+
+/* p {
+    border-style: dashed;
+} */
+
+/* Configura o layout da área principal para exibir as colunas automaticamente */
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr)); /* Ajusta a largura mínima das colunas */
+     /* Espaçamento entre as colunas */
+    column-gap: 2rem;
+}
+  
+/* Define o layout do cabeçalho para organizar o título, descrição e link "view all" */
+.header {
+    display: grid;
+    grid-template-rows: auto auto; /* Define duas linhas para o título e descrição */
+    grid-template-columns: auto min-content; /* Aloca espaço para o título e o link "view all" */
+    grid-column: 1/-1; /* Cabeçalho ocupa a largura total */
+    gap: 0.5rem 3rem; /* Espaçamento entre as linhas e colunas */
+    margin-top: 64px; /* Espaçamento superior */
+}
+
+/* Remove o espaçamento superior para o primeiro cabeçalho */
+.header:first-child {
+    margin-top: 0;
+}
+
+/* Estiliza o título do cabeçalho */
+.header__title {
+    grid-row: 1; /* Coloca o título na primeira linha */
+    grid-column: 1; /* Coloca o título na primeira coluna */
+    font-size: 3rem; /* Tamanho grande para destaque */
+    font-weight: 900; /* Fonte negrito */
+    line-height: 1.1; /* Espaçamento entre linhas */
+}
+
+/* Estiliza a descrição do cabeçalho */
+.header__description {
+    grid-row: 2; /* Coloca a descrição na segunda linha */
+    grid-column: 1/-1; /* Ocupa toda a largura */
+    font-size: 1.25rem; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte normal */
+    line-height: 1.5; /* Espaçamento entre linhas */
+}
+
+/* a {
+    border-style: dashed;
+} */
+
+/* Estiliza o link "view all" */
+.header__view-all {
+    grid-row: 1; /* Coloca o link na primeira linha */
+    grid-column: 2; /* Alinha o link à direita */
+    align-self: center; /* Centraliza verticalmente */
+    font-family: "Roboto Mono", monospace;
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    text-wrap: nowrap;
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 700; /* Negrito */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    color: #381fd1; /* Cor azul escuro */
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 1rem;
+  color: #381fd1;
+  background-color: #f6f6eb;
+}
+.nav__wrapper {
+  display: grid;
+  grid-template-columns: 2rem repeat(4, auto) 1fr repeat(2, auto);
+  gap: 1rem;
+  align-items: center;
+  max-width: 60rem;
+  min-height: 0.3125rem;
+  margin-inline: auto;
+}
+
+.logo {
+  grid-column: 1;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: subgrid;
+  padding-left: 0;
+  margin-block: 0;
+  list-style: none;
+}
+.menu--pos-left {
+  grid-column: 2/span 4;
+}
+.menu--pos-right {
+  grid-column: -3/-1;
+}
+.menu__item {
+  display: grid;
+  align-items: center;
+  height: 2rem;
+  padding-inline: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+  line-height: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 0.125rem solid rgba(56, 31, 209, 0);
+  border-radius: 0.375rem;
+}
+.menu__item:hover {
+  border: 0.125rem solid rgb(56, 31, 209);
+}
+.menu__item--style-filled {
+  color: #f6f6eb;
+  background-color: rgb(56, 31, 209);
+  border: 0.125rem solid rgb(56, 31, 209);
+}
+
+
+.sidebar {
+  position: sticky;
+  top: calc(4rem + 32px + 32px);
+  align-self: start;
+}
+.sidebar__input__label {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+  color: #4b4b4e;
+}
+.sidebar__input__search {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  height: 2.5rem;
+  padding-inline: 0.5rem 1rem;
+  margin-top: 0.875rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  background-color: #fff;
+  border: 2px solid #acacaf;
+  border-radius: 0.25rem;
+}
+.sidebar__input__search__icon {
+  align-self: center;
+  color: #acacaf;
+}
+.sidebar__input__search input {
+  border: none;
+}
+.sidebar__input__search input:focus {
+  outline: none;
+}
+.sidebar__menu {
+  padding-left: 0;
+  margin-block: 1rem 0;
+  list-style: none;
+}
+.sidebar__menu--lv-2 {
+  display: none;
+  margin-top: 8px;
+}
+.sidebar__menu__item {
+  display: block;
+  padding-block: 1rem;
+  padding-left: 1.25rem;
+  font-weight: 600;
+  line-height: 27.2px;
+  color: #4b4b4e;
+  text-decoration: none;
+}
+.sidebar__menu__item:hover {
+  color: #381fd1;
+}
+.sidebar__menu__item--type-btn {
+  cursor: pointer;
+  background-color: unset;
+  border: none;
+}
+.sidebar__menu__item--lv-2 {
+  padding-left: 3rem;
+}
+.sidebar__submit {
+  padding: 24px;
+  margin-top: 1.5rem;
+  background-color: #f3f2fc;
+  border-radius: 0.5rem;
+}
+.sidebar__submit__title {
+  font-family: Radio Canada Big, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #10284b;
+}
+.sidebar__submit__description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+.sidebar__submit__btn {
+  display: block;
+  height: 2.5rem;
+  padding-block: 0.375rem;
+  padding-inline: 1rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #381fd1;
+  border-radius: 0.375rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1/-1;
+  grid-auto-rows: 1fr;
+  gap: 2rem;
+  margin-top: 24px;
+}
+.cards:first-child {
+  margin-top: 0;
+}
+
+.card {
+  display: grid;
+  overflow: hidden;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+.card--type-a {
+  gap: 0.75rem;
+  padding: 1.5rem 1.5rem 2rem;
+  border: 0.0625rem solid #cbcbcd;
+}
+.card--type-b > * {
+  grid-row: 1;
+  grid-column: 1;
+}
+.card--type-b:nth-child(2) {
+  background-color: #f3f2fc;
+}
+.card--type-b:nth-child(3) {
+  background-color: #f6f6eb;
+}
+.card__icon {
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border: 0.0625rem solid #cbcbcd;
+  border-radius: 0.5rem;
+}
+.card__category {
+  overflow-x: hidden;
+  font-family: "Roboto Mono", monospace;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  font-family: Roboto Mono, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #381fd1;
+}
+.card__title {
+  display: -webkit-box;
+  height: 3lh;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-family: Radio Canada Big, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #10284b;
+}
+.card--type-b .card__title {
+  margin: 2rem;
+}
+
+.card__bg {
+  align-self: end;
+}
+
+.footer {
+  padding-block: 5rem;
+  padding-inline: 1.5rem;
+  background-color: #10284b;
+}
+.footer__wrapper {
+  max-width: 72.5rem;
+  margin-inline: auto;
+}
+
+.sitemap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  padding-left: 0;
+  margin-block: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3125rem;
+  color: #fff;
+  list-style: none;
+}
+.sitemap__title {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.sitemap__list {
+  display: grid;
+  row-gap: 0.5rem;
+  padding-left: 0;
+  margin-block: 0;
+  margin-top: 0.5rem;
+  list-style: none;
+}
+.sitemap__list a {
+  color: #fff;
+  text-decoration: none;
+}
+.sitemap__list a:hover {
+  text-decoration: underline;
+}
+
+.tail {
+  display: grid;
+  grid-template-columns: repeat(5, 2rem) minmax(3rem, 1fr) auto;
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+  align-items: center;
+  margin-top: 5rem;
+}
+.tail__link {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1/span 5;
+  padding-left: 0;
+  margin-block: 0;
+  list-style: none;
+}
+.tail__link a {
+  display: block;
+}
+.tail__copyrights {
+  grid-column: -2;
+  font-family: Roboto Mono, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #381fd1;
+  color: #fedb63;
+}
