@@ -101,301 +101,339 @@ body {
     color: #381fd1; /* Cor azul escuro */
 }
 
+/* Define a barra de navegação principal */
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  padding: 1rem;
-  color: #381fd1;
-  background-color: #f6f6eb;
+  position: sticky; /* Mantém a barra visível no topo ao rolar a página */
+  top: 0; /* Fixa a posição no topo da viewport */
+  z-index: 999; /* Garante que a barra fique acima de outros elementos na pilha */
+  padding: 1rem; /* Adiciona espaçamento interno em todos os lados */
+  color: #381fd1; /* Define a cor padrão do texto na barra */
+  background-color: #f6f6eb; /* Define uma cor de fundo clara */
 }
+
+/* Define o wrapper interno da navegação no topo, que organiza os elementos */
 .nav__wrapper {
-  display: grid;
-  grid-template-columns: 2rem repeat(4, auto) 1fr repeat(2, auto);
-  gap: 1rem;
-  align-items: center;
-  max-width: 60rem;
-  min-height: 0.3125rem;
-  margin-inline: auto;
+  display: grid; /* Configura o wrapper como uma grade para organizar o conteúdo */
+  grid-template-columns: 
+    2rem /* Primeira coluna fixa para ícones ou espaços pequenos */
+    repeat(4, auto) /* Quatro colunas de largura automática para menu ou itens */
+    1fr /* Uma coluna que ocupa o espaço restante, geralmente para flexibilidade */
+    repeat(2, auto); /* Duas colunas automáticas no final, por exemplo, para ações ou botões */
+  gap: 1rem; /* Espaçamento entre os itens da grade */
+  align-items: center; /* Centraliza verticalmente os elementos na grade */
+  max-width: 60rem; /* Define a largura máxima do wrapper */
+  min-height: 0.3125rem; /* Define a altura mínima do wrapper */
+  margin-inline: auto; /* Centraliza o wrapper horizontalmente na página */
 }
 
 .logo {
   grid-column: 1;
 }
 
+/* 
+   A classe .menu é declarada com grid-template-columns: subgrid;, o que significa 
+   que ela herda as colunas do contêiner pai que utiliza display: grid—neste caso, 
+   .nav__wrapper. Isso garante que os itens do menu sejam alinhados exatamente às 
+   colunas da grade definida pelo .nav__wrapper, mantendo a consistência visual.
+*/
 .menu {
-  display: grid;
-  grid-template-columns: subgrid;
-  padding-left: 0;
-  margin-block: 0;
-  list-style: none;
+  display: grid; /* Organiza os itens do menu em uma grade */
+  grid-template-columns: subgrid; /* Herda as colunas da grid do pai */
+  padding-left: 0; /* Remove o espaçamento padrão do lado esquerdo */
+  margin-block: 0; /* Remove as margens padrão acima e abaixo */
+  list-style: none; /* Remove os marcadores padrão da lista */
 }
+
+/* Define a posição do menu à esquerda */
 .menu--pos-left {
-  grid-column: 2/span 4;
+  grid-column: 2/span 4; /* Ocupa da segunda até a quinta coluna na grade */
 }
+
+/* Define a posição do menu à direita */
 .menu--pos-right {
-  grid-column: -3/-1;
+  grid-column: -3/-1; /* Ocupa as três últimas colunas na grade */
 }
+
+/* Estiliza os itens do menu */
 .menu__item {
-  display: grid;
-  align-items: center;
-  height: 2rem;
-  padding-inline: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 900;
-  line-height: 1.25rem;
-  color: inherit;
-  text-decoration: none;
-  text-transform: uppercase;
-  border: 0.125rem solid rgba(56, 31, 209, 0);
-  border-radius: 0.375rem;
+  display: grid; /* Exibe o item como uma grade */
+  align-items: center; /* Centraliza verticalmente o conteúdo do item */
+  height: 2rem; /* Define uma altura fixa para o item */
+  padding-inline: 0.5rem; /* Adiciona espaçamento interno à esquerda e à direita */
+  font-size: 0.875rem; /* Define o tamanho da fonte do texto */
+  font-weight: 900; /* Aplica negrito ao texto */
+  line-height: 1.25rem; /* Define o espaçamento entre as linhas */
+  color: inherit; /* Herda a cor do elemento pai */
+  text-decoration: none; /* Remove sublinhado do texto */
+  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  border: 0.125rem solid rgba(56, 31, 209, 0); /* Define uma borda invisível por padrão */
+  border-radius: 0.375rem; /* Aplica cantos arredondados */
 }
+
+/* Estiliza o item ao passar o cursor */
 .menu__item:hover {
-  border: 0.125rem solid rgb(56, 31, 209);
+  border: 0.125rem solid rgb(56, 31, 209); /* Torna a borda visível e define sua cor */
 }
+
+/* Estiliza os itens do menu com estilo preenchido */
 .menu__item--style-filled {
-  color: #f6f6eb;
-  background-color: rgb(56, 31, 209);
-  border: 0.125rem solid rgb(56, 31, 209);
+  color: #f6f6eb; /* Define a cor do texto */
+  background-color: rgb(56, 31, 209); /* Aplica um fundo azul escuro */
+  border: 0.125rem solid rgb(56, 31, 209); /* Define a cor da borda */
 }
 
 
+/***********/
+/* sidebar */
+/***********/
 .sidebar {
-  position: sticky;
-  top: calc(4rem + 32px + 32px);
-  align-self: start;
+  position: sticky; /* Fixa a posição enquanto o usuário rola a página, mas dentro de um contêiner pai */
+  top: calc(4rem + 32px + 32px); /* Define a distância do topo para a posição "fixa" */
+  align-self: start; /* Garante que o elemento se alinhe ao início do contêiner flexível */
 }
+
 .sidebar__input__label {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1rem;
-  color: #4b4b4e;
+  font-size: 1rem; /* Tamanho da fonte legível */
+  font-weight: 500; /* Peso mediano para destacar levemente */
+  line-height: 1rem; /* Espaçamento entre linhas */
+  color: #4b4b4e; /* Cor neutra para o texto */
 }
+
 .sidebar__input__search {
-  display: grid;
-  grid-template-columns: 1.5rem auto;
-  height: 2.5rem;
-  padding-inline: 0.5rem 1rem;
-  margin-top: 0.875rem;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  background-color: #fff;
-  border: 2px solid #acacaf;
-  border-radius: 0.25rem;
+  display: grid; /* Organiza o ícone e o campo de texto em uma grade */
+  grid-template-columns: 1.5rem auto; /* Coluna para o ícone e o restante para o input */
+  height: 2.5rem; /* Altura total do campo */
+  padding-inline: 0.5rem 1rem; /* Espaçamento interno horizontal */
+  margin-top: 0.875rem; /* Espaçamento externo superior */
+  font-size: 1rem; /* Tamanho de fonte */
+  font-weight: 500; /* Peso mediano */
+  line-height: 1.5rem; /* Altura da linha */
+  background-color: #fff; /* Fundo branco */
+  border: 2px solid #acacaf; /* Borda cinza-clara */
+  border-radius: 0.25rem; /* Arredondamento das bordas */
 }
+
 .sidebar__input__search__icon {
-  align-self: center;
-  color: #acacaf;
+  align-self: center; /* Centraliza verticalmente o ícone */
+  color: #acacaf; /* Cor neutra para o ícone */
 }
 .sidebar__input__search input {
-  border: none;
+  border: none; /* Remove a borda padrão */
 }
 .sidebar__input__search input:focus {
-  outline: none;
-}
-.sidebar__menu {
-  padding-left: 0;
-  margin-block: 1rem 0;
-  list-style: none;
-}
-.sidebar__menu--lv-2 {
-  display: none;
-  margin-top: 8px;
-}
-.sidebar__menu__item {
-  display: block;
-  padding-block: 1rem;
-  padding-left: 1.25rem;
-  font-weight: 600;
-  line-height: 27.2px;
-  color: #4b4b4e;
-  text-decoration: none;
-}
-.sidebar__menu__item:hover {
-  color: #381fd1;
-}
-.sidebar__menu__item--type-btn {
-  cursor: pointer;
-  background-color: unset;
-  border: none;
-}
-.sidebar__menu__item--lv-2 {
-  padding-left: 3rem;
-}
-.sidebar__submit {
-  padding: 24px;
-  margin-top: 1.5rem;
-  background-color: #f3f2fc;
-  border-radius: 0.5rem;
-}
-.sidebar__submit__title {
-  font-family: Radio Canada Big, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #10284b;
-}
-.sidebar__submit__description {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.7rem;
-}
-.sidebar__submit__btn {
-  display: block;
-  height: 2.5rem;
-  padding-block: 0.375rem;
-  padding-inline: 1rem;
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  background-color: #381fd1;
-  border-radius: 0.375rem;
+  outline: none; /* Remove o destaque padrão ao focar */
 }
 
+.sidebar__menu {
+  padding-left: 0; /* Remove padding padrão do navegador */
+  margin-block: 1rem 0; /* Espaçamento vertical */
+  list-style: none; /* Remove marcadores padrão da lista */
+}
+
+
+.sidebar__menu__item {
+  display: block; /* O item ocupa a largura total */
+  padding-block: 1rem; /* Espaçamento interno vertical */
+  padding-left: 1.25rem; /* Indenta os itens do menu */
+  font-weight: 600; /* Texto com destaque */
+  line-height: 27.2px; /* Altura entre linhas */
+  color: #4b4b4e; /* Cor padrão */
+  text-decoration: none; /* Remove sublinhados */
+}
+.sidebar__menu__item:hover {
+  color: #381fd1; /* Cor de destaque ao passar o mouse */
+}
+.sidebar__menu__item--type-btn {
+  cursor: pointer; /* Mostra o ponteiro como um botão */
+  background-color: unset; /* Remove fundo */
+  border: none; /* Remove borda */
+}
+
+.sidebar__submit {
+  padding: 24px; /* Espaçamento interno */
+  margin-top: 1.5rem; /* Espaçamento externo superior */
+  background-color: #f3f2fc; /* Fundo claro */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+.sidebar__submit__title {
+  font-family: Radio Canada Big, sans-serif; /* Fonte específica */
+  font-size: 1.5rem; /* Tamanho grande */
+  font-weight: 900; /* Peso forte para destaque */
+  line-height: 1.1; /* Linhas compactas */
+  color: #10284b; /* Azul escuro */
+}
+.sidebar__submit__description {
+  margin-top: 0.5rem; /* Espaçamento do título */
+  font-size: 1rem; /* Tamanho padrão */
+  line-height: 1.7rem; /* Altura entre linhas */
+}
+
+.sidebar__submit__btn {
+  display: block; /* Botão ocupa toda a largura */
+  height: 2.5rem; /* Altura fixa */
+  padding-block: 0.5rem; /* Espaçamento vertical */
+  padding-inline: 1rem; /* Espaçamento horizontal */
+  margin-top: 1.5rem; /* Espaçamento do texto acima */
+  font-size: 1rem; /* Tamanho do texto */
+  font-weight: 500; /* Peso médio */
+  line-height: 1.6rem; /* Espaçamento interno do texto */
+  color: #fff; /* Texto branco */
+  text-align: center; /* Centraliza o texto */
+  text-decoration: none; /* Remove sublinhado */
+  background-color: #381fd1; /* Fundo azul escuro */
+  border-radius: 0.375rem; /* Bordas arredondadas */
+}
+
+/*********/
+/* cards */
+/*********/
 .cards {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1/-1;
-  grid-auto-rows: 1fr;
-  gap: 2rem;
-  margin-top: 24px;
+  display: grid; /* Os cards são organizados em uma grade */
+  grid-template-columns: subgrid; /* Os cards herdam a estrutura de grade do grid pai */
+  grid-column: 1/-1; /* Os cards ocupam toda a largura da grade pai */
+  grid-auto-rows: 1fr; /* As linhas têm altura uniforme baseada na proporção */
+  gap: 2rem; /* Espaçamento de 2rem entre os cards */
+  margin-top: 24px; /* Espaçamento superior entre os cards e o elemento anterior */
 }
 .cards:first-child {
-  margin-top: 0;
+  margin-top: 0; /* Remove o espaçamento superior no primeiro conjunto de cards */
 }
 
 .card {
-  display: grid;
-  overflow: hidden;
-  text-decoration: none;
-  border-radius: 0.5rem;
+  display: grid; /* O conteúdo interno do card é organizado em uma grade */
+  overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do card */
+  text-decoration: none; /* Remove sublinhados de links dentro do card */
+  border-radius: 0.5rem; /* Adiciona bordas arredondadas ao card */
 }
+
 .card--type-a {
-  gap: 0.75rem;
-  padding: 1.5rem 1.5rem 2rem;
-  border: 0.0625rem solid #cbcbcd;
+  gap: 0.75rem; /* Espaçamento interno entre os elementos */
+  padding: 1.5rem 1.5rem 2rem; /* Preenchimento interno (topo, laterais, base) */
+  border: 0.0625rem solid #cbcbcd; /* Borda fina e neutra */
 }
+
 .card--type-b > * {
-  grid-row: 1;
-  grid-column: 1;
+  grid-row: 1; /* Todos os elementos ocupam a mesma linha na grade interna */
+  grid-column: 1; /* Todos os elementos ocupam a mesma coluna, sobrepondo-se */
 }
 .card--type-b:nth-child(2) {
-  background-color: #f3f2fc;
+  background-color: #f3f2fc; /* Fundo claro roxo */
 }
 .card--type-b:nth-child(3) {
-  background-color: #f6f6eb;
+  background-color: #f6f6eb; /* Fundo claro amarelo */
 }
+
 .card__icon {
-  width: 2.5rem;
-  aspect-ratio: 1/1;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border: 0.0625rem solid #cbcbcd;
-  border-radius: 0.5rem;
+  width: 2.5rem; /* Largura fixa */
+  aspect-ratio: 1/1; /* Mantém o ícone como um quadrado perfeito */
+  object-fit: contain; /* O ícone é redimensionado para caber sem distorção */
+  border: 0.0625rem solid #cbcbcd; /* Borda fina para destaque */
+  border-radius: 0.5rem; /* Cantos arredondados */
 }
+
 .card__category {
-  overflow-x: hidden;
-  font-family: "Roboto Mono", monospace;
-  text-overflow: ellipsis;
-  text-wrap: nowrap;
-  font-family: Roboto Mono, monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #381fd1;
+  overflow-x: hidden; /* Esconde conteúdo horizontal excedente */
+  text-overflow: ellipsis; /* Adiciona reticências em textos longos */
+  text-wrap: nowrap; /* Impede a quebra de linha */
+  font-family: "Roboto Mono", monospace; /* Fonte monoespaçada para clareza */
+  font-size: 1rem; /* Tamanho padrão */
+  font-weight: 700; /* Peso para destaque */
+  line-height: 1.4; /* Espaçamento confortável entre linhas */
+  color: #381fd1; /* Azul escuro */
 }
+
 .card__title {
-  display: -webkit-box;
-  height: 3lh;
-  overflow: hidden;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  font-family: Radio Canada Big, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #10284b;
+  display: -webkit-box; /* Cria um container flexível compatível com "line-clamp" */
+  height: 3lh; /* Altura fixa de três linhas */
+  overflow: hidden; /* Esconde o excesso de texto */
+  -webkit-line-clamp: 3; /* Limita o texto a 3 linhas */
+  -webkit-box-orient: vertical; /* Orientação vertical para o clamp */
+  font-family: Radio Canada Big, sans-serif; /* Fonte grande e estilizada */
+  font-size: 1.5rem; /* Tamanho destacado */
+  font-weight: 900; /* Texto em negrito */
+  line-height: 1.1; /* Linhas compactas */
+  color: #10284b; /* Azul escuro */
 }
 .card--type-b .card__title {
-  margin: 2rem;
+  margin: 2rem; /* Espaçamento personalizado para o tipo B */
 }
+
 
 .card__bg {
-  align-self: end;
+  align-self: end; /* Alinha o fundo ao final da célula do grid */
 }
 
+/**********/
+/* footer */
+/**********/
 .footer {
-  padding-block: 5rem;
-  padding-inline: 1.5rem;
-  background-color: #10284b;
+  padding-block: 5rem; /* Espaçamento interno vertical de 5rem */
+  padding-inline: 1.5rem; /* Espaçamento interno horizontal de 1.5rem */
+  background-color: #10284b; /* Fundo azul escuro */
 }
 .footer__wrapper {
-  max-width: 72.5rem;
-  margin-inline: auto;
+  max-width: 72.5rem; /* Largura máxima do conteúdo no rodapé */
+  margin-inline: auto; /* Centraliza o conteúdo horizontalmente */
 }
 
 .sitemap {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  padding-left: 0;
-  margin-block: 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.3125rem;
-  color: #fff;
-  list-style: none;
+  display: grid; /* Organiza os itens do mapa do site em uma grade */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas dinâmicas que ajustam a largura mínima para 250px */
+  gap: 3rem; /* Espaçamento entre as colunas e linhas */
+  padding-left: 0; /* Remove o recuo padrão das listas */
+  margin-block: 0; /* Remove margens verticais */
+  font-size: 0.875rem; /* Tamanho de fonte pequeno */
+  font-weight: 600; /* Fonte semi-negrito */
+  line-height: 1.3125rem; /* Altura das linhas para melhorar a legibilidade */
+  color: #fff; /* Texto branco */
+  list-style: none; /* Remove os marcadores padrão da lista */
 }
 .sitemap__title {
-  font-weight: 900;
-  text-transform: uppercase;
+  font-weight: 900; /* Título em negrito */
+  text-transform: uppercase; /* Converte o texto para letras maiúsculas */
 }
 .sitemap__list {
-  display: grid;
-  row-gap: 0.5rem;
-  padding-left: 0;
-  margin-block: 0;
-  margin-top: 0.5rem;
-  list-style: none;
+  display: grid; /* Organiza os itens da lista em uma grade */
+  row-gap: 0.5rem; /* Espaçamento entre os itens */
+  padding-left: 0; /* Remove recuo padrão da lista */
+  margin-block: 0; /* Remove margens verticais */
+  margin-top: 0.5rem; /* Adiciona um pequeno espaçamento superior */
+  list-style: none; /* Remove os marcadores padrão da lista */
 }
 .sitemap__list a {
-  color: #fff;
-  text-decoration: none;
+  color: #fff; /* Links em branco */
+  text-decoration: none; /* Remove o sublinhado padrão */
 }
 .sitemap__list a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
 
+
 .tail {
-  display: grid;
-  grid-template-columns: repeat(5, 2rem) minmax(3rem, 1fr) auto;
-  -moz-column-gap: 0.75rem;
-       column-gap: 0.75rem;
-  align-items: center;
-  margin-top: 5rem;
+  display: grid; /* Organiza o conteúdo do rodapé em uma grade */
+  grid-template-columns: repeat(5, 2rem) minmax(3rem, 1fr) auto; /* Define 5 colunas fixas, uma flexível e outra para conteúdo extra */
+  column-gap: 0.75rem; /* Espaçamento horizontal entre as colunas */
+  align-items: center; /* Alinha verticalmente os itens no centro */
+  margin-top: 5rem; /* Espaçamento superior para separar do conteúdo anterior */
 }
 .tail__link {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1/span 5;
-  padding-left: 0;
-  margin-block: 0;
-  list-style: none;
+  display: grid; /* Organiza os links em uma grade */
+  grid-template-columns: subgrid; /* Herda a configuração de colunas da grade pai */
+  grid-column: 1/span 5; /* Ocupa as primeiras 5 colunas */
+  padding-left: 0; /* Remove recuo padrão da lista */
+  margin-block: 0; /* Remove margens verticais */
+  list-style: none; /* Remove os marcadores padrão da lista */
 }
 .tail__link a {
-  display: block;
+  display: block; /* Faz os links ocuparem toda a área disponível */
 }
 .tail__copyrights {
-  grid-column: -2;
-  font-family: Roboto Mono, monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #381fd1;
-  color: #fedb63;
+  grid-column: -2; /* Posiciona o elemento na penúltima coluna */
+  font-family: Roboto Mono, monospace; /* Fonte monoespaçada para destaque */
+  font-size: 1rem; /* Tamanho de fonte padrão */
+  font-weight: 700; /* Texto em negrito */
+  line-height: 1.4; /* Espaçamento confortável entre linhas */
+  color: #fedb63; /* Cor dourada */
 }
+
