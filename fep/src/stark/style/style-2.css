@@ -10,10 +10,6 @@ body {
   color: #10284b;
 }
 
-/* div {
-    border-style: dashed;
-} */
-
 /* Estiliza o container principal para centralizar e ajustar o espaçamento ao redor do conteúdo */
 .middle {
     padding-block: 4rem 10rem; /* Espaçamento superior e inferior */
@@ -34,7 +30,7 @@ body {
 /* Estiliza a barra lateral para que ela fique fixa ao rolar a página */
 .sidebar {
     position: sticky; /* Permite que a barra lateral fique fixa ao rolar */
-    top: 5rem; /* Define a distância do topo da tela */
+    top: 0; /* Define a distância do topo da tela */
     align-self: start; /* Alinha o início do conteúdo da barra lateral */
 }
 
@@ -105,7 +101,7 @@ body {
 .nav {
   position: sticky; /* Mantém a barra visível no topo ao rolar a página */
   top: 0; /* Fixa a posição no topo da viewport */
-  z-index: 999; /* Garante que a barra fique acima de outros elementos na pilha */
+  z-index: 100; /* Garante que a barra fique acima de outros elementos na pilha */
   padding: 1rem; /* Adiciona espaçamento interno em todos os lados */
   color: #381fd1; /* Define a cor padrão do texto na barra */
   background-color: #f6f6eb; /* Define uma cor de fundo clara */
@@ -114,15 +110,10 @@ body {
 /* Define o wrapper interno da navegação no topo, que organiza os elementos */
 .nav__wrapper {
   display: grid; /* Configura o wrapper como uma grade para organizar o conteúdo */
-  grid-template-columns: 
-    2rem /* Primeira coluna fixa para ícones ou espaços pequenos */
-    repeat(4, auto) /* Quatro colunas de largura automática para menu ou itens */
-    1fr /* Uma coluna que ocupa o espaço restante, geralmente para flexibilidade */
-    repeat(2, auto); /* Duas colunas automáticas no final, por exemplo, para ações ou botões */
+  grid-template-columns: 2rem auto auto auto auto 1fr auto auto;
   gap: 1rem; /* Espaçamento entre os itens da grade */
   align-items: center; /* Centraliza verticalmente os elementos na grade */
   max-width: 60rem; /* Define a largura máxima do wrapper */
-  min-height: 0.3125rem; /* Define a altura mínima do wrapper */
   margin-inline: auto; /* Centraliza o wrapper horizontalmente na página */
 }
 
@@ -151,22 +142,21 @@ body {
 
 /* Define a posição do menu à direita */
 .menu--pos-right {
-  grid-column: -3/-1; /* Ocupa as três últimas colunas na grade */
+  grid-column: -3/-1; /* Ocupa as duas últimas colunas na grade */
 }
 
 /* Estiliza os itens do menu */
 .menu__item {
-  display: grid; /* Exibe o item como uma grade */
+  padding: 0.3rem;
   align-items: center; /* Centraliza verticalmente o conteúdo do item */
   height: 2rem; /* Define uma altura fixa para o item */
   padding-inline: 0.5rem; /* Adiciona espaçamento interno à esquerda e à direita */
   font-size: 0.875rem; /* Define o tamanho da fonte do texto */
   font-weight: 900; /* Aplica negrito ao texto */
-  line-height: 1.25rem; /* Define o espaçamento entre as linhas */
   color: inherit; /* Herda a cor do elemento pai */
   text-decoration: none; /* Remove sublinhado do texto */
   text-transform: uppercase; /* Transforma o texto em maiúsculas */
-  border: 0.125rem solid rgba(56, 31, 209, 0); /* Define uma borda invisível por padrão */
+  border: 0.125rem solid rgba(0, 0, 0, 0); /* Define uma borda invisível por padrão */
   border-radius: 0.375rem; /* Aplica cantos arredondados */
 }
 
@@ -188,7 +178,7 @@ body {
 /***********/
 .sidebar {
   position: sticky; /* Fixa a posição enquanto o usuário rola a página, mas dentro de um contêiner pai */
-  top: calc(4rem + 32px + 32px); /* Define a distância do topo para a posição "fixa" */
+  top: calc(4rem + 64px); /* Define a distância do topo para a posição "fixa" */
   align-self: start; /* Garante que o elemento se alinhe ao início do contêiner flexível */
 }
 
@@ -203,11 +193,10 @@ body {
   display: grid; /* Organiza o ícone e o campo de texto em uma grade */
   grid-template-columns: 1.5rem auto; /* Coluna para o ícone e o restante para o input */
   height: 2.5rem; /* Altura total do campo */
-  padding-inline: 0.5rem 1rem; /* Espaçamento interno horizontal */
+  padding-inline: 0.5rem 0.7rem; /* Espaçamento interno horizontal */
   margin-top: 0.875rem; /* Espaçamento externo superior */
   font-size: 1rem; /* Tamanho de fonte */
   font-weight: 500; /* Peso mediano */
-  line-height: 1.5rem; /* Altura da linha */
   background-color: #fff; /* Fundo branco */
   border: 2px solid #acacaf; /* Borda cinza-clara */
   border-radius: 0.25rem; /* Arredondamento das bordas */
@@ -234,19 +223,14 @@ body {
 .sidebar__menu__item {
   display: block; /* O item ocupa a largura total */
   padding-block: 1rem; /* Espaçamento interno vertical */
-  padding-left: 1.25rem; /* Indenta os itens do menu */
+  padding-left: 1.5rem; /* Indenta os itens do menu */
   font-weight: 600; /* Texto com destaque */
-  line-height: 27.2px; /* Altura entre linhas */
+  line-height: 1.7rem; /* Altura entre linhas */
   color: #4b4b4e; /* Cor padrão */
   text-decoration: none; /* Remove sublinhados */
 }
 .sidebar__menu__item:hover {
   color: #381fd1; /* Cor de destaque ao passar o mouse */
-}
-.sidebar__menu__item--type-btn {
-  cursor: pointer; /* Mostra o ponteiro como um botão */
-  background-color: unset; /* Remove fundo */
-  border: none; /* Remove borda */
 }
 
 .sidebar__submit {
@@ -257,7 +241,6 @@ body {
 }
 
 .sidebar__submit__title {
-  font-family: Radio Canada Big, sans-serif; /* Fonte específica */
   font-size: 1.5rem; /* Tamanho grande */
   font-weight: 900; /* Peso forte para destaque */
   line-height: 1.1; /* Linhas compactas */
@@ -270,14 +253,14 @@ body {
 }
 
 .sidebar__submit__btn {
-  display: block; /* Botão ocupa toda a largura */
+  display: flex; /* Botão ocupa toda a largura */
+  align-items: center;
+  justify-content: center;
   height: 2.5rem; /* Altura fixa */
   padding-block: 0.5rem; /* Espaçamento vertical */
-  padding-inline: 1rem; /* Espaçamento horizontal */
-  margin-top: 1.5rem; /* Espaçamento do texto acima */
-  font-size: 1rem; /* Tamanho do texto */
+  margin-top: 1.4rem; /* Espaçamento do texto acima */
+  font-size: 0.95rem; /* Tamanho do texto */
   font-weight: 500; /* Peso médio */
-  line-height: 1.6rem; /* Espaçamento interno do texto */
   color: #fff; /* Texto branco */
   text-align: center; /* Centraliza o texto */
   text-decoration: none; /* Remove sublinhado */
